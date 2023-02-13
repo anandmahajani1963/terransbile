@@ -1,0 +1,15 @@
+---
+- name: Install new package(s)
+  hosts: oel8-12c-db-gg2
+  become: true
+  tasks:
+    - name: rename the host
+      replace:
+        path: /etc/hostname
+        regexp: gold
+        replace: 12c-db-gg2
+      register: hostnm
+    - debug:
+        var: hostnm
+    #- name: reboot remote node
+      #reboot:
